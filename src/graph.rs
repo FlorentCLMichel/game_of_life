@@ -11,6 +11,7 @@ pub struct MainState {
     pixel_size: usize,
     col1: (f32,f32,f32),
     col2: (f32,f32,f32),
+    flip_proba: (usize, usize)
 }
 
 impl MainState {
@@ -22,7 +23,8 @@ impl MainState {
             first_frame: true, 
             pixel_size: config.pixel_size, 
             col1: config.col1, 
-            col2: config.col2 })
+            col2: config.col2,
+            flip_proba: config.flip_proba })
     }
 }
 
@@ -33,7 +35,7 @@ impl event::EventHandler<ggez::GameError> for MainState {
             self.first_frame = false;
         } else {
             sleep(self.time_step);        
-            self.board.evolve(&self.rules);
+            self.board.update(&self.rules, self.flip_proba);
         }
         Ok(())
     }

@@ -35,6 +35,6 @@ fn main() {
     loop {
         println!("{}[2J{}", 27 as char, &board);
         sleep(duration);
-        board.evolve(&rules);
+        board.update(&rules, (0,1));
     }
 }
