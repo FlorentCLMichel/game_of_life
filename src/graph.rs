@@ -56,7 +56,7 @@ impl event::EventHandler<ggez::GameError> for MainState {
                         .unwrap()
                         .build(&mut ctx).unwrap();
                     graphics::draw(ctx, &pixel, graphics::DrawParam::new()
-                                   .offset(glam::Vec2::new(-((j*self.pixel_size) as f32), -((i*self.pixel_size) as f32))))?;
+                                   .offset([-((j*self.pixel_size) as f32), -((i*self.pixel_size) as f32)]))?;
                 }
             }
         }
