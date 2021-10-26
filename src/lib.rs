@@ -148,7 +148,7 @@ pub fn read_csv(fname: &str) -> Result<((usize, usize), Vec<u8>), Box<dyn std::e
 
     // separate in rows
     let content = content.split('\n').collect::<Vec<&str>>();
-    let n_rows = content.len();
+    let n_rows = content.len() - 1;
 
     // number of columns
     let n_cols = content[0].split(' ').collect::<Vec<&str>>().len() - 1;
