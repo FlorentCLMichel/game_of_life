@@ -1,9 +1,10 @@
-50000 10 80 80 0. 0. 0. 1. 1. 1. 1 10000 
-# The first line of this file contains the configuration data. Each number must be followed by a space.
-# In order, they represent: 
-#   the time between steps in µs
-#   the pixel size
-#   the grid dimensions (height then depth)
+50000 50000 10 80 80 0. 0. 0. 1. 1. 1. 0 10000 ,,
+# The first line of this file contains the configuration data. Each number must be followed by a space.,,
+# In order, they represent: ,
+#   the time between steps in µs,,
+#   the initial wait time in µs,,
+#   the pixel size,,
+#   the grid dimensions (height then depth),,
 #   the ‘dead’ color (r, g, b)
 #   the ‘alive’ color (r, g, b)
-#   probability to flip state (first integer over secodnd one)
+#   probability to flip state (first integer over second one),,

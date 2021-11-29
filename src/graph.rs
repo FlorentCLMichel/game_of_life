@@ -7,6 +7,7 @@ pub struct MainState {
     board: Board,
     rules: Rules,
     time_step: Duration,
+    init_time: Duration,
     first_frame: bool,
     pixel_size: usize,
     col1: (f32,f32,f32),
@@ -20,6 +21,7 @@ impl MainState {
     {
         Ok(MainState { board, rules, 
             time_step: Duration::from_micros(config.wait_time_micros), 
+            init_time: Duration::from_micros(config.init_wait_time_micros), 
             first_frame: true, 
             pixel_size: config.pixel_size, 
             col1: config.col1, 
@@ -30,11 +32,13 @@ impl MainState {
 
 impl event::EventHandler<ggez::GameError> for MainState {
     
-    fn update(&mut self, _ctx: &mut Context) -> GameResult {
+    fn update(&mut self, ctx: &mut Context) -> GameResult {
         if self.first_frame {
+            self.draw(ctx)?;
+            sleep(self.init_time);
             self.first_frame = false;
         } else {
-            sleep(self.time_step);        
+            sleep(self.time_step);
             self.board.update(&self.rules, self.flip_proba);
         }
         Ok(())

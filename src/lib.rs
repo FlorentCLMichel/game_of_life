@@ -8,6 +8,7 @@ pub use graph::*;
 
 pub struct Config {
     pub wait_time_micros: u64,
+    pub init_wait_time_micros: u64,
     pub pixel_size: usize,
     pub dimensions: (usize, usize),
     pub col1: (f32,f32,f32),
@@ -29,6 +30,7 @@ impl Config {
         // read the content
         Ok(Config {
             wait_time_micros: content.next().ok_or(err_message)?.parse::<u64>()?,
+            init_wait_time_micros: content.next().ok_or(err_message)?.parse::<u64>()?,
             pixel_size: content.next().ok_or(err_message)?.parse::<usize>()?,
             dimensions : (
                 content.next().ok_or(err_message)?.parse::<usize>()?,
