@@ -1,3 +1,6 @@
+clippy:
+	cargo clippy --offline
+
 custom:
 	cargo build --release --offline
 	./target/release/game_of_life

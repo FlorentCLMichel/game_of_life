@@ -127,7 +127,7 @@ impl std::fmt::Display for Board {
                     write!(f, "░")?;
                 }
             }
-            write!(f, "\n")?;
+            writeln!(f)?;
         }
         write!(f, "")
     }
@@ -143,6 +143,7 @@ impl Rules {
 /// read a state file, space- and newline-separated
 ///
 /// The file must contain only 0s and 1s and all rows need to have the same length.
+#[allow(clippy::type_complexity)]
 pub fn read_csv(fname: &str) -> Result<((usize, usize), Vec<u8>), Box<dyn std::error::Error>> {
     
     // load the content
@@ -153,7 +154,7 @@ pub fn read_csv(fname: &str) -> Result<((usize, usize), Vec<u8>), Box<dyn std::e
     let n_rows = content.len() - 1;
 
     // number of columns
-    let n_cols = content[0].split(' ').collect::<Vec<&str>>().len() - 1;
+    let n_cols = content[0].split(' ').count() - 1;
 
     // load the data
     let mut data = Vec::<u8>::new();
