@@ -44,7 +44,7 @@ impl event::EventHandler<ggez::GameError> for MainState {
         Ok(())
     }
 
-    fn draw(&mut self, mut ctx: &mut Context) -> GameResult {
+    fn draw(&mut self, ctx: &mut Context) -> GameResult {
 
         // clear the window
         graphics::clear(ctx, [self.col1.0, self.col1.1, self.col1.2, 1.].into());
@@ -58,7 +58,7 @@ impl event::EventHandler<ggez::GameError> for MainState {
                             graphics::Color::new(self.col2.0, self.col2.1, self.col2.2, 1.)
                         )
                         .unwrap()
-                        .build(&mut ctx).unwrap();
+                        .build(ctx).unwrap();
                     graphics::draw(ctx, &pixel, graphics::DrawParam::new()
                                    .offset([-((j*self.pixel_size) as f32), -((i*self.pixel_size) as f32)]))?;
                 }
